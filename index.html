@@ -1422,7 +1422,322 @@
     </div>
   </div>
 </footer>
+        <script>
+      // Mobile Navigation Toggle
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const closeMobileMenu = document.getElementById("closeMobileMenu");
+      const mobileNav = document.getElementById("mobileNav");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileNav.classList.add("open");
+      });
+
+      closeMobileMenu.addEventListener("click", () => {
+        mobileNav.classList.remove("open");
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll("#mobileNav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileNav.classList.remove("open");
+        });
+      });
+
+      // Registration Modal Functionality
+      const registrationModal = document.getElementById("registrationModal");
+      const closeRegistration = document.getElementById("closeRegistration");
+      const registerLinks = document.querySelectorAll(".register-link");
+
+      registerLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          registrationModal.classList.add("open");
+        });
+      });
+
+      closeRegistration.addEventListener("click", () => {
+        registrationModal.classList.remove("open");
+      });
+
+      // Close modal when clicking outside the form
+      registrationModal.addEventListener("click", (e) => {
+        if (e.target === registrationModal) {
+          registrationModal.classList.remove("open");
+        }
+      });
+
+      // Input validation functions
+      function validateName(input) {
+        const namePattern = /^[A-Za-z\s]+$/;
+        const errorElement = document.getElementById('captainError');
+        
+        if (!namePattern.test(input.value)) {
+          input.classList.add('input-error');
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          input.classList.remove('input-error');
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+
+      function validateMobile(input) {
+        const mobilePattern = /^[0-9]{10}$/;
+        const errorElement = document.getElementById('mobileError');
+        
+        if (!mobilePattern.test(input.value)) {
+          input.classList.add('input-error');
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          input.classList.remove('input-error');
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+
+      function validateAadhar(input) {
+        const aadharPattern = /^[0-9]{12}$/;
+        const errorElement = document.getElementById('aadharError');
+        
+        if (!aadharPattern.test(input.value)) {
+          input.classList.add('input-error');
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          input.classList.remove('input-error');
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+
+      function validateAltContact(input) {
+        const mobilePattern = /^[0-9]{10}$/;
+        const errorElement = document.getElementById('altContactError');
+        
+        if (!mobilePattern.test(input.value)) {
+          input.classList.add('input-error');
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          input.classList.remove('input-error');
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+
+      function validateEmail(input) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const errorElement = document.getElementById('emailError');
+        
+        if (!emailPattern.test(input.value)) {
+          input.classList.add('input-error');
+          errorElement.style.display = 'block';
+          return false;
+        } else {
+          input.classList.remove('input-error');
+          errorElement.style.display = 'none';
+          return true;
+        }
+      }
+
+      // Add event listeners for real-time validation
+      document.addEventListener('DOMContentLoaded', function() {
+      //form data submit 
+        const form = document.getElementById('registrationForm');
+        if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const successMessage = document.getElementById("successMessage");
+
+        // 🔸 Show success instantly
+        successMessage.classList.remove("d-none");
+        this.reset();
+
+        // 🔸 Send data in background (no delay to user)
+        fetch(
+          "https://script.google.com/macros/s/AKfycbwCNgPZYfM7UwMYZRo0UfrwKXaTopZhUa-ClmkqhMo7ucaTRoA-uzY_1YePZ55R8Pw/exec",
+          {
+            method: "POST",
+            body: formData,
+          }
+        ).catch((error) => console.error("Background submit failed:", error));
+      });
+    }
+        const captainInput = form.querySelector('input[name="captain"]');
+        const mobileInput = form.querySelector('input[name="mobile"]');
+        const aadharInput = form.querySelector('input[name="aadhar"]');
+        const altContactInput = form.querySelector('input[name="alt_contact"]');
+        const emailInput = form.querySelector('input[name="email"]');
+
+        captainInput.addEventListener('input', () => validateName(captainInput));
+        mobileInput.addEventListener('input', () => validateMobile(mobileInput));
+        aadharInput.addEventListener('input', () => validateAadhar(aadharInput));
+        altContactInput.addEventListener('input', () => validateAltContact(altContactInput));
+        emailInput.addEventListener('input', () => validateEmail(emailInput));
+      });
+
+      // Registration Form with validation
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          
+          // Validate all fields
+          const form = e.target;
+          const captainInput = form.querySelector('input[name="captain"]');
+          const mobileInput = form.querySelector('input[name="mobile"]');
+          const aadharInput = form.querySelector('input[name="aadhar"]');
+          const altContactInput = form.querySelector('input[name="alt_contact"]');
+          const emailInput = form.querySelector('input[name="email"]');
+          
+          const isNameValid = validateName(captainInput);
+          const isMobileValid = validateMobile(mobileInput);
+          const isAadharValid = validateAadhar(aadharInput);
+          const isAltContactValid = validateAltContact(altContactInput);
+          const isEmailValid = validateEmail(emailInput);
+          
+          if (isNameValid && isMobileValid && isAadharValid && isAltContactValid && isEmailValid) {
+            document.getElementById("successMessage").classList.remove("hidden");
+            setTimeout(() => {
+              e.target.reset();
+              registrationModal.classList.remove("open");
+              setTimeout(() => {
+                document.getElementById("successMessage").classList.add("hidden");
+              }, 1000);
+            }, 3000);
+          }
+        });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        if (!anchor.classList.contains("register-link")) {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        }
+      });
+
+      // Countdown Timer
+      function updateCountdown() {
+        const registrationDeadline = new Date(
+          "December 15, 2025 23:59:59"
+        ).getTime();
+        const now = new Date().getTime();
+        const timeLeft = registrationDeadline - now;
+
+        if (timeLeft > 0) {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+          document.getElementById("days").textContent = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = minutes
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("seconds").textContent = seconds
+            .toString()
+            .padStart(2, "0");
+        } else {
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+          document.querySelector(".countdown-item").style.opacity = "0.5";
+        }
+      }
+
+      // Update countdown every second
+      setInterval(updateCountdown, 1000);
+      updateCountdown(); // Initial call
+
+      // Multiple Carousel Functionality
+  // Multiple Carousel Functionality - FIXED
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all carousels
+    const carousels = document.querySelectorAll('.carousel-container');
     
+    carousels.forEach((carousel, index) => {
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      let currentSlide = 0;
+      let slideInterval;
+
+      // Function to show a specific slide
+      function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        
+        // Show the selected slide
+        slides[index].classList.add('active');
+        currentSlide = index;
+      }
+
+      // Function to show next slide
+      function nextSlide() {
+        let nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+      }
+
+      // Function to show previous slide
+      function prevSlide() {
+        let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prevIndex);
+      }
+
+      // Event listeners for navigation buttons
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetInterval();
+      });
+      
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetInterval();
+      });
+
+      // Auto-advance slides - SLOWER (8 seconds)
+      function startInterval() {
+        slideInterval = setInterval(nextSlide, 8000);
+      }
+
+      // Reset interval when user interacts with carousel
+      function resetInterval() {
+        clearInterval(slideInterval);
+        startInterval();
+      }
+
+      // Start the auto-advance
+      startInterval();
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+      });
+      
+      carousel.addEventListener('mouseleave', () => {
+        startInterval();
+      });
+    });
+  });
+</script>
 
 
   </body>
