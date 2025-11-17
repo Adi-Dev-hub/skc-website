@@ -379,6 +379,246 @@
         color: #fbbf24;
       }
 
+      /* =========================
+         ENHANCED RULES SECTION STYLES
+      ========================== */
+      .rules-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .rules-category {
+        background: rgba(31, 41, 55, 0.9);
+        border-radius: 1rem;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .rules-category:hover {
+        border-color: rgba(245, 158, 11, 0.6);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .rules-category-header {
+        background: linear-gradient(
+          90deg,
+          rgba(245, 158, 11, 0.15) 0%,
+          rgba(245, 158, 11, 0.05) 100%
+        );
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+      }
+
+      .rules-category-header h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: white;
+        flex-grow: 1;
+      }
+
+      .rules-category-icon {
+        background: #f59e0b;
+        color: #1f2937;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        flex-shrink: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .rules-category-arrow {
+        color: #f59e0b;
+        transition: transform 0.3s ease;
+        font-size: 1.25rem;
+      }
+
+      .rules-category.active .rules-category-arrow {
+        transform: rotate(180deg);
+      }
+
+      .rules-category-content {
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+
+      .rules-category.active .rules-category-content {
+        padding: 1.5rem;
+        max-height: 2000px;
+      }
+
+      .rule-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.25rem;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease;
+      }
+
+      .rule-item:hover {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+      }
+
+      .rule-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .rule-icon {
+        background: #f59e0b;
+        color: #1f2937;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        flex-shrink: 0;
+        font-size: 0.875rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .rule-text {
+        flex-grow: 1;
+      }
+
+      .rule-text h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      .rule-text p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #d1d5db;
+        line-height: 1.6;
+      }
+
+      .highlight-text {
+        color: #f59e0b;
+        font-weight: 600;
+      }
+
+      .warning-text {
+        color: #ef4444;
+        font-weight: 600;
+      }
+
+      /* Rules Navigation */
+      .rules-nav {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+        margin-bottom: 1.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .rules-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .rules-nav-item {
+        background: rgba(31, 41, 55, 0.8);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        border-radius: 2rem;
+        padding: 0.75rem 1.25rem;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 600;
+        color: #d1d5db;
+      }
+
+      .rules-nav-item:hover {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+      }
+
+      .rules-nav-item.active {
+        background: #f59e0b;
+        color: #1f2937;
+        border-color: #f59e0b;
+      }
+
+      /* Quick Rules Summary */
+      .quick-rules {
+        background: rgba(31, 41, 55, 0.9);
+        border-radius: 1rem;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .quick-rules h3 {
+        color: #f59e0b;
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+
+      .quick-rules h3 i {
+        margin-right: 0.75rem;
+      }
+
+      .quick-rules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .quick-rule-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 0.5rem;
+      }
+
+      .quick-rule-icon {
+        background: #f59e0b;
+        color: #1f2937;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.75rem;
+        flex-shrink: 0;
+      }
+
+      .quick-rule-text {
+        font-size: 0.9rem;
+        color: #d1d5db;
+      }
+
+      /* Mobile-specific styles */
       @media (max-width: 768px) {
         .player-row {
           grid-template-columns: 1fr;
@@ -387,6 +627,66 @@
         .remove-player {
           width: 100%;
           margin-top: 0;
+        }
+
+        .rules-category-header {
+          padding: 1rem;
+        }
+
+        .rules-category-header h3 {
+          font-size: 1.125rem;
+        }
+
+        .rules-category-icon {
+          width: 2rem;
+          height: 2rem;
+          margin-right: 0.75rem;
+        }
+
+        .rules-category.active .rules-category-content {
+          padding: 1rem;
+        }
+
+        .rule-item {
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+        }
+
+        .rule-icon {
+          width: 1.75rem;
+          height: 1.75rem;
+          margin-right: 0.75rem;
+        }
+
+        .rule-text h4 {
+          font-size: 1rem;
+        }
+
+        .rule-text p {
+          font-size: 0.875rem;
+        }
+
+        .quick-rules {
+          padding: 1.25rem;
+        }
+
+        .quick-rules h3 {
+          font-size: 1.25rem;
+        }
+
+        .quick-rules-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .rules-nav {
+          gap: 0.5rem;
+        }
+
+        .rules-nav-item {
+          padding: 0.6rem 1rem;
+          font-size: 0.875rem;
         }
       }
     </style>
@@ -545,13 +845,6 @@
         </li>
         <li>
           <a
-            href="#"
-            class="block py-2 text-lg bg-yellow-500 text-gray-900 font-bold rounded-lg text-center register-link"
-            >Register Now</a
-          >
-        </li>
-        <li>
-          <a
             href="#sponsors"
             class="block py-2 text-lg hover:text-yellow-400 transition duration-300"
             >Sponsors</a
@@ -562,6 +855,13 @@
             href="#contact"
             class="block py-2 text-lg hover:text-yellow-400 transition duration-300"
             >Contact</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            class="block py-2 text-lg bg-yellow-500 text-gray-900 font-bold rounded-lg text-center register-link"
+            >Register Now</a
           >
         </li>
       </ul>
@@ -721,7 +1021,6 @@
         </form>
       </div>
     </div>
-
     <!-- =========================
        HERO SECTION
     ========================== -->
@@ -883,7 +1182,7 @@
     <div class="section-divider"></div>
 
     <!-- =========================
-       RULES SECTION
+       ENHANCED RULES SECTION
     ========================== -->
     <section id="rules" class="py-16 bg-gray-800">
       <div class="max-w-4xl mx-auto px-6">
@@ -892,7 +1191,7 @@
         >
           Rules & Regulations
         </h2>
-        <p class="text-gray-300 text-2xl font-bold text-center mb-8">
+        <p class="text-gray-300 text-xl md:text-2xl font-bold text-center mb-8">
           Follow the fair play spirit of the game!
         </p>
 
@@ -918,239 +1217,339 @@
           </div>
         </div>
 
-        <div
-          class="bg-gray-900 rounded-2xl p-8 shadow-xl border border-yellow-500/20"
-        >
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Left Column -->
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
+        <!-- Quick Rules Summary -->
+        <div class="quick-rules">
+          <h3><i class="fas fa-bolt"></i> Quick Rules Summary</h3>
+          <div class="quick-rules-grid">
+            <div class="quick-rule-item">
+              <div class="quick-rule-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="quick-rule-text">
+                <strong>Team Size:</strong> 7 players + 3 substitutes
+              </div>
+            </div>
+            <div class="quick-rule-item">
+              <div class="quick-rule-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="quick-rule-text">
+                <strong>Match Time:</strong> 10-minute halves
+              </div>
+            </div>
+            <div class="quick-rule-item">
+              <div class="quick-rule-icon">
+                <i class="fas fa-id-card"></i>
+              </div>
+              <div class="quick-rule-text">
+                <strong>Documents:</strong> Aadhar Card & College ID required
+              </div>
+            </div>
+            <div class="quick-rule-item">
+              <div class="quick-rule-icon">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div class="quick-rule-text">
+                <strong>Eligibility:</strong> Diploma/Graduation/Post-Graduation
+                students only
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rules Navigation -->
+        <div class="rules-nav">
+          <div class="rules-nav-item active" data-category="eligibility">
+            Eligibility
+          </div>
+          <div class="rules-nav-item" data-category="team-format">
+            Team Format
+          </div>
+          <div class="rules-nav-item" data-category="gameplay">Gameplay</div>
+          <div class="rules-nav-item" data-category="discipline">
+            Discipline
+          </div>
+          <div class="rules-nav-item" data-category="documents">Documents</div>
+        </div>
+
+        <!-- Updated Rules Container with Accordion for Mobile -->
+        <div class="rules-container">
+          <!-- Eligibility & Requirements Category -->
+          <div class="rules-category active" id="eligibility-category">
+            <div class="rules-category-header">
+              <div class="rules-category-icon">
+                <i class="fas fa-user-check"></i>
+              </div>
+              <h3>Eligibility & Requirements</h3>
+              <div class="rules-category-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="rules-category-content">
+              <div class="rule-item">
+                <div class="rule-icon">
                   <i class="fas fa-graduation-cap"></i>
                 </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">
-                    College Requirement
-                  </h3>
-                  <p class="text-gray-400">
+                <div class="rule-text">
+                  <h4>College Requirement</h4>
+                  <p>
                     All team members must be from the same college. Students of
                     different courses but same college are allowed.
                   </p>
                 </div>
               </div>
 
-              <!-- New Rule: Girls Not Allowed -->
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
+              <div class="rule-item">
+                <div class="rule-icon">
                   <i class="fas fa-female"></i>
                 </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">
-                    Gender Eligibility
-                  </h3>
-                  <p class="text-gray-400">
-                    <span class="text-red-400 font-semibold"
-                      >Girls are not allowed</span
-                    >
-                    to participate in this tournament. This is a boys-only
+                <div class="rule-text">
+                  <h4>Gender Eligibility</h4>
+                  <p>
+                    <span class="warning-text">Girls are not allowed</span> to
+                    participate in this tournament. This is a boys-only
                     competition.
                   </p>
                 </div>
               </div>
 
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
+              <div class="rule-item">
+                <div class="rule-icon">
                   <i class="fas fa-user-check"></i>
                 </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">
-                    Player Eligibility
-                  </h3>
-                  <p class="text-gray-400">
+                <div class="rule-text">
+                  <h4>Player Eligibility</h4>
+                  <p>
                     Each player can represent only one team. Playing for
-                    multiple teams leads to disqualification of team.
+                    multiple teams leads to
+                    <span class="warning-text">disqualification</span>.
                   </p>
                 </div>
               </div>
 
-              <!-- New Rule: Age Limit -->
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
+              <div class="rule-item">
+                <div class="rule-icon">
                   <i class="fas fa-birthday-cake"></i>
                 </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Age Limit</h3>
-                  <p class="text-gray-400">
-                    Participants must be between 18 and 24 years of age for the
+                <div class="rule-text">
+                  <h4>Age Limit</h4>
+                  <p>
+                    Participants must be between
+                    <span class="highlight-text">18 +</span> of age for the
                     tournament.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-users"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Team Format</h3>
-                  <p class="text-gray-400">
-                    7 players + 3 substitutes per team; rolling substitutions
-                    allowed.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-clock"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Match Time</h3>
-                  <p class="text-gray-400">
-                    10-minute halves; in case of a tie → 3 penalties.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Right Column -->
-            <div class="space-y-4">
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-id-card"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">
-                    Required Documents
-                  </h3>
-                  <p class="text-gray-400">
-                    Students must bring original Aadhar Card and College ID Card
-                    (current year) for verification.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-file-alt"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">
-                    Document Verification
-                  </h3>
-                  <p class="text-gray-400">
-                    Teams submitting false or invalid documents will be
-                    disqualification of team.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-exchange-alt"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">
-                    Throw-ins & Restarts
-                  </h3>
-                  <p class="text-gray-400">
-                    All throw-ins and outside balls must be taken from a
-                    grounded kick.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-exclamation-triangle"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Discipline</h3>
-                  <p class="text-gray-400">
-                    Yellow card → 3 minutes out; Red card → suspended for
-                    current & next match.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-user-shield"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Conduct</h3>
-                  <p class="text-gray-400">
-                    Only captains may speak to referees. Misconduct leads to
-                    team elimination.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-ban"></i>
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Zero Tolerance</h3>
-                  <p class="text-gray-400">
-                    Any fights or serious misconduct will result in immediate
-                    team elimination.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Gameplay & Referee Decision -->
-          <div class="mt-6 space-y-4">
-            <div class="p-4 bg-gray-800 rounded-lg">
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
-                  <i class="fas fa-futbol"></i>
+          <!-- Team & Match Format Category -->
+          <div class="rules-category" id="team-format-category">
+            <div class="rules-category-header">
+              <div class="rules-category-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Team & Match Format</h3>
+              <div class="rules-category-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="rules-category-content">
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-users"></i>
                 </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Gameplay Rules</h3>
-                  <p class="text-gray-400">
-                    No offside rule; no slide tackling. Goalkeepers cannot throw
-                    the ball past the half line, cannot take volleys, and must
-                    release the ball within 4-6 seconds.
+                <div class="rule-text">
+                  <h4>Team Format</h4>
+                  <p>
+                    <span class="highlight-text"
+                      >7 players + 3 substitutes</span
+                    >
+                    per team; rolling substitutions allowed.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Match Time</h4>
+                  <p>
+                    <span class="highlight-text">10-minute halves</span>; in
+                    case of a tie →
+                    <span class="highlight-text">3 penalties</span>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Throw-ins & Restarts</h4>
+                  <p>
+                    All throw-ins and outside balls must be taken from a
+                    <span class="highlight-text">grounded kick</span>.
                   </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="p-4 bg-gray-800 rounded-lg">
-              <div class="flex items-start">
-                <div
-                  class="bg-yellow-500 text-gray-900 rounded-full p-2 mr-4 flex-shrink-0"
-                >
+          <!-- Gameplay Rules Category -->
+          <div class="rules-category" id="gameplay-category">
+            <div class="rules-category-header">
+              <div class="rules-category-icon">
+                <i class="fas fa-futbol"></i>
+              </div>
+              <h3>Gameplay Rules</h3>
+              <div class="rules-category-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="rules-category-content">
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-futbol"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Gameplay Rules</h4>
+                  <p>
+                    <span class="warning-text"
+                      >No offside rule; no slide tackling</span
+                    >. Goalkeepers cannot throw the ball past the half line,
+                    cannot take volleys, and must release the ball within
+                    <span class="highlight-text">4-6 seconds</span>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Discipline & Conduct Category -->
+          <div class="rules-category" id="discipline-category">
+            <div class="rules-category-header">
+              <div class="rules-category-icon">
+                <i class="fas fa-gavel"></i>
+              </div>
+              <h3>Discipline & Conduct</h3>
+              <div class="rules-category-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="rules-category-content">
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Discipline</h4>
+                  <p>
+                    <span class="highlight-text">Yellow card</span> → 3 minutes
+                    out; <span class="warning-text">Red card</span> → suspended
+                    for current & next match.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Conduct</h4>
+                  <p>
+                    Only captains may speak to referees. Misconduct leads to
+                    <span class="warning-text">team elimination</span>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-ban"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Zero Tolerance</h4>
+                  <p>
+                    Any fights or serious misconduct will result in
+                    <span class="warning-text">immediate team elimination</span
+                    >.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <div class="rule-icon">
                   <i class="fas fa-gavel"></i>
                 </div>
-                <div>
-                  <h3 class="text-lg font-bold text-white">Referee Decision</h3>
-                  <p class="text-gray-400">
-                    The referee's and committee decision is final and binding in
-                    all matters.
+                <div class="rule-text">
+                  <h4>Referee Decision</h4>
+                  <p>
+                    The referee's and committee decision is
+                    <span class="highlight-text">final and binding</span> in all
+                    matters.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Protest Rule -->
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-gavel"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Protest Policy</h4>
+                  <p>
+                    Teams filing protests against opposition must pay
+                    <span class="highlight-text">₹2,000 protest fee</span>. The
+                    fee will be refunded only if the protest is valid. No refund
+                    if the protest is invalid or false.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Documents Category -->
+          <div class="rules-category" id="documents-category">
+            <div class="rules-category-header">
+              <div class="rules-category-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h3>Required Documents</h3>
+              <div class="rules-category-arrow">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="rules-category-content">
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-id-card"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Required Documents</h4>
+                  <p>
+                    Students must bring
+                    <span class="highlight-text">original Aadhar Card</span> and
+                    <span class="highlight-text">College ID Card</span> (current
+                    year) for verification.
+                  </p>
+                </div>
+              </div>
+
+              <div class="rule-item">
+                <div class="rule-icon">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="rule-text">
+                  <h4>Document Verification</h4>
+                  <p>
+                    Teams submitting false or invalid documents will be
+                    <span class="warning-text">disqualified</span>.
                   </p>
                 </div>
               </div>
@@ -1514,7 +1913,7 @@
     <!-- =========================
        FOLLOW US SECTION
     ========================== -->
-    <section id="followus" class="py-16 bg-gray-800">
+    <section id="followus" class="py-16 bg-gray-800 text-center">
       <h2
         class="text-4xl md:text-5xl font-bold text-yellow-400 mb-6 heading-font"
       >
@@ -1558,7 +1957,7 @@
             coverage!
           </p>
           <a
-            href="https://youtube.com/c/SoccerKnockoutChallenge"
+            href="https://youtube.com/@soccerknockoutchallenge?si=NyZ8H_-9aQCkrakr"
             class="block text-center youtube-gradient text-white font-bold py-2 px-4 rounded-lg hover:opacity-90 transition"
           >
             Soccer Knockout Challenge
@@ -1785,9 +2184,9 @@
        JAVASCRIPT SECTION
     ========================== -->
     <script>
-      /* ===========================================================================
-   1) MOBILE NAVIGATION
-============================================================================ */
+      // =======================
+      // MOBILE NAVIGATION
+      // =======================
       const mobileMenuButton = document.getElementById("mobileMenuButton");
       const closeMobileMenu = document.getElementById("closeMobileMenu");
       const mobileNav = document.getElementById("mobileNav");
@@ -1795,13 +2194,15 @@
       mobileMenuButton.addEventListener("click", () => {
         mobileNav.classList.add("open");
       });
+
       closeMobileMenu.addEventListener("click", () => {
         mobileNav.classList.remove("open");
       });
+
       document.querySelectorAll("#mobileNav a").forEach((link) => {
-        link.addEventListener("click", () =>
-          mobileNav.classList.remove("open")
-        );
+        link.addEventListener("click", () => {
+          mobileNav.classList.remove("open");
+        });
       });
 
       /* ===========================================================================
@@ -2016,7 +2417,7 @@
           try {
             const response = JSON.parse(xhr.responseText);
             if (response.result === "success") {
-              // Show success in modal
+              // SUCCESS: Show success messages
               successTeamId.textContent = teamID;
               successMessage.style.display = "block";
 
@@ -2027,33 +2428,40 @@
               // Scroll to the team ID section
               teamIdSuccessSection.scrollIntoView({ behavior: "smooth" });
 
-              // Reset form after 15 seconds
+              // SUCCESS: Reset everything after 5 seconds (changed from 15)
               setTimeout(() => {
+                // Reset form and modal
                 registrationForm.reset();
                 successMessage.style.display = "none";
                 registrationModal.classList.remove("open");
 
-                // Reset player count
+                // Reset player fields
                 playersContainer.innerHTML = "";
                 playerCount = 0;
                 updatePlayerCount();
 
-                submitBtn.textContent = originalText;
+                // Re-add initial player field
+                addPlayerField();
+
+                // CRITICAL FIX: Reset button to original state
+                submitBtn.textContent = "Register Team";
                 submitBtn.disabled = false;
-              }, 15000);
+              }, 5000); // Changed from 15000 to 5000 (5 seconds)
             } else {
+              // ERROR: Immediately reset button on error
               alert("Error: " + response.message);
-              submitBtn.textContent = originalText;
+              submitBtn.textContent = "Register Team";
               submitBtn.disabled = false;
             }
           } catch (error) {
-            // Even if response parsing fails, consider it successful
+            // NETWORK/Parse ERROR: Consider it successful but reset button immediately
             successTeamId.textContent = teamID;
             successMessage.style.display = "block";
             finalTeamIdElement.textContent = teamID;
             teamIdSuccessSection.style.display = "block";
             teamIdSuccessSection.scrollIntoView({ behavior: "smooth" });
 
+            // Reset after 5 seconds for successful-like case
             setTimeout(() => {
               registrationForm.reset();
               successMessage.style.display = "none";
@@ -2061,23 +2469,24 @@
               playersContainer.innerHTML = "";
               playerCount = 0;
               updatePlayerCount();
-              submitBtn.textContent = originalText;
+              addPlayerField();
+              submitBtn.textContent = "Register Team";
               submitBtn.disabled = false;
-            }, 15000);
+            }, 5000); // Changed from 15000 to 5000 (5 seconds)
           }
         };
-
         xhr.onerror = function () {
           alert("Network error occurred. Please try again.");
-          submitBtn.textContent = originalText;
+          // Use hardcoded text instead of variable
+          submitBtn.textContent = "Register Team";
           submitBtn.disabled = false;
         };
 
         xhr.send(urlEncodedData);
       });
-      /* ===========================================================================
-   7) SMOOTH SCROLL
-============================================================================ */
+      // =======================
+      // SMOOTH SCROLL
+      // =======================
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         if (!anchor.classList.contains("register-link")) {
           anchor.addEventListener("click", function (e) {
@@ -2089,55 +2498,204 @@
         }
       });
 
-      /* ===========================================================================
-   8) COUNTDOWN TIMER (unchanged)
-============================================================================ */
+      // =======================
+      // COUNTDOWN TIMER
+      // =======================
       function updateCountdown() {
-        const deadline = new Date("December 15, 2025 23:59:59").getTime();
-        const now = Date.now();
-        const t = deadline - now;
+        const registrationDeadline = new Date(
+          "December 15, 2025 23:59:59"
+        ).getTime();
+        const now = new Date().getTime();
+        const timeLeft = registrationDeadline - now;
 
-        if (t > 0) {
-          const d = Math.floor(t / (1000 * 60 * 60 * 24));
-          const h = Math.floor((t / (1000 * 60 * 60)) % 24);
-          const m = Math.floor((t / (1000 * 60)) % 60);
-          const s = Math.floor((t / 1000) % 60);
+        if (timeLeft > 0) {
+          const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
+            (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          const minutes = Math.floor(
+            (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-          days.textContent = String(d).padStart(2, "0");
-          hours.textContent = String(h).padStart(2, "0");
-          minutes.textContent = String(m).padStart(2, "0");
-          seconds.textContent = String(s).padStart(2, "0");
+          document.getElementById("days").textContent = days
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("hours").textContent = hours
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("minutes").textContent = minutes
+            .toString()
+            .padStart(2, "0");
+          document.getElementById("seconds").textContent = seconds
+            .toString()
+            .padStart(2, "0");
+        } else {
+          document.getElementById("days").textContent = "00";
+          document.getElementById("hours").textContent = "00";
+          document.getElementById("minutes").textContent = "00";
+          document.getElementById("seconds").textContent = "00";
+          document.querySelector(".countdown-item").style.opacity = "0.5";
         }
       }
+
+      // Update countdown every second
       setInterval(updateCountdown, 1000);
-      updateCountdown();
+      updateCountdown(); // Initial call
 
-      /* ===========================================================================
-   9) CAROUSELS (unchanged)
-============================================================================ */
-      document.querySelectorAll(".carousel-container").forEach((carousel) => {
-        const slides = carousel.querySelectorAll(".carousel-slide");
-        const prev = carousel.querySelector(".carousel-prev");
-        const next = carousel.querySelector(".carousel-next");
-        let index = 0;
+      // =======================
+      // MULTIPLE CAROUSELS
+      // =======================
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize all carousels
+        const carousels = document.querySelectorAll(".carousel-container");
 
-        function show(i) {
-          slides.forEach((s) => s.classList.remove("active"));
-          slides[i].classList.add("active");
-          index = i;
+        carousels.forEach((carousel, index) => {
+          const slides = carousel.querySelectorAll(".carousel-slide");
+          const prevBtn = carousel.querySelector(".carousel-prev");
+          const nextBtn = carousel.querySelector(".carousel-next");
+          let currentSlide = 0;
+          let slideInterval;
+
+          // Function to show a specific slide
+          function showSlide(index) {
+            // Hide all slides
+            slides.forEach((slide) => slide.classList.remove("active"));
+
+            // Show the selected slide
+            slides[index].classList.add("active");
+            currentSlide = index;
+          }
+
+          // Function to show next slide
+          function nextSlide() {
+            let nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+          }
+
+          // Function to show previous slide
+          function prevSlide() {
+            let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prevIndex);
+          }
+
+          // Event listeners for navigation buttons
+          nextBtn.addEventListener("click", () => {
+            nextSlide();
+            resetInterval();
+          });
+
+          prevBtn.addEventListener("click", () => {
+            prevSlide();
+            resetInterval();
+          });
+
+          // Auto-advance slides - SLOWER (8 seconds)
+          function startInterval() {
+            slideInterval = setInterval(nextSlide, 8000);
+          }
+
+          // Reset interval when user interacts with carousel
+          function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+          }
+
+          // Start the auto-advance
+          startInterval();
+
+          // Pause on hover
+          carousel.addEventListener("mouseenter", () => {
+            clearInterval(slideInterval);
+          });
+
+          carousel.addEventListener("mouseleave", () => {
+            startInterval();
+          });
+        });
+      });
+
+      // =======================
+      // ENHANCED RULES SECTION FUNCTIONALITY
+      // =======================
+      document.addEventListener("DOMContentLoaded", function () {
+        const ruleCategories = document.querySelectorAll(".rules-category");
+        const rulesNavItems = document.querySelectorAll(".rules-nav-item");
+
+        // Accordion functionality
+        ruleCategories.forEach((category) => {
+          const header = category.querySelector(".rules-category-header");
+
+          header.addEventListener("click", () => {
+            // Close all other categories
+            ruleCategories.forEach((otherCategory) => {
+              if (otherCategory !== category) {
+                otherCategory.classList.remove("active");
+              }
+            });
+
+            // Toggle current category
+            category.classList.toggle("active");
+
+            // Update active nav item
+            const categoryId = category.id.replace("-category", "");
+            rulesNavItems.forEach((item) => {
+              if (item.dataset.category === categoryId) {
+                item.classList.add("active");
+              } else {
+                item.classList.remove("active");
+              }
+            });
+          });
+        });
+
+        // Navigation functionality
+        rulesNavItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            const categoryId = item.dataset.category;
+
+            // Update active nav item
+            rulesNavItems.forEach((navItem) => {
+              navItem.classList.remove("active");
+            });
+            item.classList.add("active");
+
+            // Close all categories
+            ruleCategories.forEach((category) => {
+              category.classList.remove("active");
+            });
+
+            // Open selected category
+            const targetCategory = document.getElementById(
+              `${categoryId}-category`
+            );
+            if (targetCategory) {
+              targetCategory.classList.add("active");
+
+              // Scroll to the category
+              targetCategory.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Keep the first category open by default on mobile
+        if (window.innerWidth <= 768) {
+          ruleCategories[0].classList.add("active");
         }
 
-        function nextSlide() {
-          show((index + 1) % slides.length);
+        // Auto-close categories when clicking outside on mobile
+        if (window.innerWidth <= 768) {
+          document.addEventListener("click", (e) => {
+            if (!e.target.closest(".rules-category")) {
+              ruleCategories.forEach((category) => {
+                category.classList.remove("active");
+              });
+            }
+          });
         }
-        function prevSlide() {
-          show((index - 1 + slides.length) % slides.length);
-        }
-
-        next.addEventListener("click", () => nextSlide());
-        prev.addEventListener("click", () => prevSlide());
-
-        setInterval(nextSlide, 8000);
       });
     </script>
   </body>
