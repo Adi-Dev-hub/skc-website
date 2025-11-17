@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Registration</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .player-box,
+      .captain-box {
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 12px 20px;
+        background: #007bff;
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Team Registration Form</h2>
+
+    <!-- Hidden Team ID -->
+    <input type="hidden" id="teamID" name="teamID" />
+
+    <h3>Captain Details</h3>
+    <div class="captain-box">
+      <label>Captain Name</label>
+      <input type="text" id="captainName" required />
+
+      <label>Captain Phone</label>
+      <input type="text" id="captainPhone" required />
+
+      <label>Captain Email</label>
+      <input type="email" id="captainEmail" required />
+    </div>
+
+    <h3>Player Details</h3>
+
+    <!-- PLAYER TEMPLATE (1–7) -->
+    <div id="players">
+      <script>
+        for (let i = 1; i <= 7; i++) {
+          document.write(`
+                    <div class="player-box">
+                        <h4>Player ${i}</h4>
+
+                        <label>Player ${i} Name</label>
+                        <input type="text" id="player${i}Name">
+
+                        <label>Player ${i} Phone</label>
+                        <input type="text" id="player${i}Phone">
+                    </div>
+                `);
+        }
+      </script>
+    </div>
+
+    <button onclick="submitForm()">Submit Team</button>
+
+    <p id="msg"></p>
+
+    <script>
+      // -------------------------
+      // 1. GET teamID from URL
+      // -------------------------
+      const params = new URLSearchParams(window.location.search);
+      const teamID = params.get("teamID") || "";
+      document.getElementById("teamID").value = teamID;
+
+      // -------------------------
+      // 2. SUBMIT FORM
+      // -------------------------
+      function submitForm() {
+        const msg = document.getElementById("msg");
+        msg.innerText = "Submitting...";
+
+        const formData = new FormData();
+
+        // Add Team ID
+        formData.append("teamID", document.getElementById("teamID").value);
+
+        // Captain Data
+        formData.append(
+          "captainName",
+          document.getElementById("captainName").value
+        );
+        formData.append(
+          "captainPhone",
+          document.getElementById("captainPhone").value
+        );
+        formData.append(
+          "captainEmail",
+          document.getElementById("captainEmail").value
+        );
+
+        // Player Data (1–7)
+        for (let i = 1; i <= 7; i++) {
+          formData.append(
+            `player${i}Name`,
+            document.getElementById(`player${i}Name`).value
+          );
+          formData.append(
+            `player${i}Phone`,
+            document.getElementById(`player${i}Phone`).value
+          );
+        }
+
+        // Send to Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbxEgGw8FRuU_KwoMNRzOjoc5rLilEHB4ua008RWy7umrKmOlOiUE3QkAu8p_G3JFUWRwA/exec",
+          {
+            method: "POST",
+            body: formData,
+          }
+        )
+          .then((r) => r.text())
+          .then((res) => {
+            msg.innerText = "Submitted Successfully!";
+          })
+          .catch((err) => {
+            msg.innerText = "Error: " + err;
+          });
+      }
+    </script>
+  </body>
+</html>
