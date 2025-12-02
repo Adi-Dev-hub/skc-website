@@ -975,7 +975,7 @@
           </div>
 
           <!-- Players Information Section -->
-          <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+          <!-- <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
             <div
               class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4"
             >
@@ -993,10 +993,10 @@
 
             <p class="player-count" id="playerCount">Players: 0/9</p>
 
-            <div id="playersContainer">
-              <!-- Player fields will be added here dynamically -->
-            </div>
-          </div>
+            <div id="playersContainer"> -->
+          <!-- Player fields will be added here dynamically -->
+          <!-- </div>
+          </div> -->
 
           <!-- Team ID Display -->
           <div id="teamIdDisplay" class="team-id-display" style="display: none">
@@ -2279,61 +2279,61 @@
       /* ===========================================================================
    4) PLAYER MANAGEMENT — EXACT 9 REQUIRED
 ============================================================================ */
-      const playersContainer = document.getElementById("playersContainer");
-      const addPlayerBtn = document.getElementById("addPlayer");
-      const playerCountLabel = document.getElementById("playerCount");
+      //   const playersContainer = document.getElementById("playersContainer");
+      //   const addPlayerBtn = document.getElementById("addPlayer");
+      //   const playerCountLabel = document.getElementById("playerCount");
 
-      let playerCount = 0;
-      const maxPlayers = 9;
+      //   let playerCount = 0;
+      //   const maxPlayers = 9;
 
-      function updatePlayerCount() {
-        playerCountLabel.textContent = `Players: ${playerCount}/9`;
+      //   function updatePlayerCount() {
+      //     playerCountLabel.textContent = `Players: ${playerCount}/9`;
 
-        if (playerCount >= maxPlayers) {
-          addPlayerBtn.disabled = true;
-          addPlayerBtn.classList.add("opacity-50", "cursor-not-allowed");
-        } else {
-          addPlayerBtn.disabled = false;
-          addPlayerBtn.classList.remove("opacity-50", "cursor-not-allowed");
-        }
-      }
+      //     if (playerCount >= maxPlayers) {
+      //       addPlayerBtn.disabled = true;
+      //       addPlayerBtn.classList.add("opacity-50", "cursor-not-allowed");
+      //     } else {
+      //       addPlayerBtn.disabled = false;
+      //       addPlayerBtn.classList.remove("opacity-50", "cursor-not-allowed");
+      //     }
+      //   }
 
-      function addPlayerField() {
-        if (playerCount >= maxPlayers) return;
+      //   function addPlayerField() {
+      //     if (playerCount >= maxPlayers) return;
 
-        playerCount++;
+      //     playerCount++;
 
-        const row = document.createElement("div");
-        row.className = "grid grid-cols-1 md:grid-cols-2 gap-6 mt-4";
+      //     const row = document.createElement("div");
+      //     row.className = "grid grid-cols-1 md:grid-cols-2 gap-6 mt-4";
 
-        row.innerHTML = `
-      <div>
-        <input type="text" 
-          name="player_name_${playerCount}" 
-          placeholder="Player ${playerCount} Name *"
-          required pattern="[A-Za-z\\s]+"
-          class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500"
-        />
-        <div class="error-message">Invalid name</div>
-      </div>
+      //     row.innerHTML = `
+      //   <div>
+      //     <input type="text"
+      //       name="player_name_${playerCount}"
+      //       placeholder="Player ${playerCount} Name *"
+      //       required pattern="[A-Za-z\\s]+"
+      //       class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500"
+      //     />
+      //     <div class="error-message">Invalid name</div>
+      //   </div>
 
-      <div>
-        <input type="text"
-          name="player_aadhar_${playerCount}"
-          placeholder="Player ${playerCount} Aadhar No *"
-          required pattern="[0-9]{12}"
-          class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500"
-        />
-        <div class="error-message">Invalid Aadhar (12 digits required)</div>
-      </div>
-    `;
+      //   <div>
+      //     <input type="text"
+      //       name="player_aadhar_${playerCount}"
+      //       placeholder="Player ${playerCount} Aadhar No *"
+      //       required pattern="[0-9]{12}"
+      //       class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500"
+      //     />
+      //     <div class="error-message">Invalid Aadhar (12 digits required)</div>
+      //   </div>
+      // `;
 
-        playersContainer.appendChild(row);
-        updatePlayerCount();
-      }
+      //     playersContainer.appendChild(row);
+      //     updatePlayerCount();
+      //   }
 
-      addPlayerBtn.addEventListener("click", addPlayerField);
-      updatePlayerCount();
+      //   addPlayerBtn.addEventListener("click", addPlayerField);
+      //   updatePlayerCount();
 
       /* ===========================================================================
    5) TEAM ID GENERATOR
@@ -2364,10 +2364,10 @@
       registrationForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        if (playerCount !== 9) {
-          alert("Please add exactly 9 players.");
-          return;
-        }
+        // if (playerCount !== 9) {
+        //   alert("Please add exactly 9 players.");
+        //   return;
+        // }
 
         // Validate all fields
         const fieldsOK =
@@ -2405,15 +2405,15 @@
           email: registrationForm.email.value,
         };
 
-        // Add all 9 players data
-        for (let i = 1; i <= 9; i++) {
-          data[`player${i}Name`] = document.querySelector(
-            `input[name="player_name_${i}"]`
-          ).value;
-          data[`player${i}Aadhar`] = document.querySelector(
-            `input[name="player_aadhar_${i}"]`
-          ).value;
-        }
+        // // Add all 9 players data
+        // for (let i = 1; i <= 9; i++) {
+        //   data[`player${i}Name`] = document.querySelector(
+        //     `input[name="player_name_${i}"]`
+        //   ).value;
+        //   data[`player${i}Aadhar`] = document.querySelector(
+        //     `input[name="player_aadhar_${i}"]`
+        //   ).value;
+        // }
 
         // Convert to URL-encoded string
         const urlEncodedData = new URLSearchParams(data).toString();
@@ -2452,12 +2452,12 @@
                 registrationModal.classList.remove("open");
 
                 // Reset player fields
-                playersContainer.innerHTML = "";
-                playerCount = 0;
-                updatePlayerCount();
+                // playersContainer.innerHTML = "";
+                // playerCount = 0;
+                // updatePlayerCount();
 
                 // Re-add initial player field
-                addPlayerField();
+                // addPlayerField();
 
                 // CRITICAL FIX: Reset button to original state
                 submitBtn.textContent = "Register Team";
@@ -2482,10 +2482,10 @@
               registrationForm.reset();
               successMessage.style.display = "none";
               registrationModal.classList.remove("open");
-              playersContainer.innerHTML = "";
-              playerCount = 0;
-              updatePlayerCount();
-              addPlayerField();
+              // playersContainer.innerHTML = "";
+              // playerCount = 0;
+              // updatePlayerCount();
+              // addPlayerField();
               submitBtn.textContent = "Register Team";
               submitBtn.disabled = false;
             }, 5000); // Changed from 15000 to 5000 (5 seconds)
