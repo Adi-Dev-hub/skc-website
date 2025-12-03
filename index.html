@@ -928,7 +928,7 @@
                   required
                 />
               </div>
-              <div>
+              <!-- <div>
                 <input
                   type="text"
                   name="aadhar"
@@ -941,11 +941,11 @@
                 <div class="error-message" id="aadharError">
                   Please enter a valid 12-digit Aadhar number
                 </div>
-              </div>
-            </div>
+              </div> -->
+              <!-- </div> -->
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <div>
+              <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"> -->
+              <!-- <div>
                 <input
                   type="tel"
                   name="alt_contact"
@@ -957,8 +957,8 @@
                 />
                 <div class="error-message" id="altContactError">
                   Please enter a valid 10-digit mobile number
-                </div>
-              </div>
+                </div> -->
+              <!-- </div> -->
               <div>
                 <input
                   type="email"
@@ -2262,12 +2262,12 @@
         return ok;
       }
 
-      function validateAadhar(input) {
-        const ok = /^[0-9]{12}$/.test(input.value);
-        input.classList.toggle("input-error", !ok);
-        input.nextElementSibling.style.display = ok ? "none" : "block";
-        return ok;
-      }
+      // function validateAadhar(input) {
+      //   const ok = /^[0-9]{12}$/.test(input.value);
+      //   input.classList.toggle("input-error", !ok);
+      //   input.nextElementSibling.style.display = ok ? "none" : "block";
+      //   return ok;
+      // }
 
       function validateEmail(input) {
         const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
@@ -2373,8 +2373,8 @@
         const fieldsOK =
           validateName(registrationForm.captain) &&
           validateMobile(registrationForm.mobile) &&
-          validateAadhar(registrationForm.aadhar) &&
-          validateMobile(registrationForm.alt_contact) &&
+          // validateAadhar(registrationForm.aadhar) &&
+          // validateMobile(registrationForm.alt_contact) &&
           validateEmail(registrationForm.email) &&
           registrationForm.college.value.trim() !== "";
 
@@ -2399,9 +2399,9 @@
           timestamp: new Date().toISOString(),
           college: registrationForm.college.value,
           captainName: registrationForm.captain.value,
-          aadhar: registrationForm.aadhar.value,
+          // aadhar: registrationForm.aadhar.value,
           contact: registrationForm.mobile.value,
-          alternateContact: registrationForm.alt_contact.value,
+          // alternateContact: registrationForm.alt_contact.value,
           email: registrationForm.email.value,
         };
 
@@ -2421,7 +2421,7 @@
         // Use XMLHttpRequest (works better with Google Apps Script)
         const xhr = new XMLHttpRequest();
         const scriptURL =
-          "https://script.google.com/macros/s/AKfycbzuGuzVVLfAuEpmNWhbCVBPU9H7VA-qazuZmTZof5209BxzTNvpnfjda1PJ0odRKgVVkA/exec";
+          "https://script.google.com/macros/s/AKfycbywkQjg1o2v0B7t9-zlWZ4uZjVPsyxpfCo0DDZ8xvPpebBi-oJ0j3woDaH2SVjsdw6F/exec";
 
         xhr.open("POST", scriptURL);
         xhr.setRequestHeader(
