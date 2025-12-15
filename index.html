@@ -928,37 +928,6 @@
                   required
                 />
               </div>
-              <!-- <div>
-                <input
-                  type="text"
-                  name="aadhar"
-                  placeholder="Captain Aadhar Card No *"
-                  class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500 focus:outline-none transition"
-                  required
-                  pattern="[0-9]{12}"
-                  title="Please enter a valid 12-digit Aadhar number"
-                />
-                <div class="error-message" id="aadharError">
-                  Please enter a valid 12-digit Aadhar number
-                </div>
-              </div> -->
-              <!-- </div> -->
-
-              <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"> -->
-              <!-- <div>
-                <input
-                  type="tel"
-                  name="alt_contact"
-                  placeholder="Alternative Number *"
-                  class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500 focus:outline-none transition"
-                  required
-                  pattern="[0-9]{10}"
-                  title="Please enter a valid 10-digit mobile number"
-                />
-                <div class="error-message" id="altContactError">
-                  Please enter a valid 10-digit mobile number
-                </div> -->
-              <!-- </div> -->
               <div>
                 <input
                   type="email"
@@ -973,30 +942,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Players Information Section -->
-          <!-- <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
-            <div
-              class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4"
-            >
-              <h3 class="text-xl font-bold text-yellow-400">
-                Team Players Information
-              </h3>
-              <button
-                type="button"
-                id="addPlayer"
-                class="bg-yellow-500 text-gray-900 font-bold px-4 py-2 rounded-lg hover:bg-yellow-400 transition duration-300 mt-2 md:mt-0"
-              >
-                <i class="fas fa-plus mr-2"></i>Add Player
-              </button>
-            </div>
-
-            <p class="player-count" id="playerCount">Players: 0/9</p>
-
-            <div id="playersContainer"> -->
-          <!-- Player fields will be added here dynamically -->
-          <!-- </div>
-          </div> -->
 
           <!-- Team ID Display -->
           <div id="teamIdDisplay" class="team-id-display" style="display: none">
@@ -1071,6 +1016,14 @@
               >
               & 22<span class="align-super text-xs">nd</span> December 2025
             </span>
+          </p>
+
+          <!-- Registration Extended Notice -->
+          <p
+            class="text-sm md:text-lg text-yellow-400 font-bold text-center mb-4"
+          >
+            <i class="fas fa-clock mr-2"></i> Registration Extended Till
+            December 19!
           </p>
 
           <!-- Countdown Timer -->
@@ -1853,29 +1806,7 @@
         </p>
 
         <div class="mb-12">
-          <!-- <h3 class="text-2xl font-bold text-white mb-8">Current Sponsors</h3>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div
-              class="bg-gray-900 p-6 rounded-2xl border border-yellow-500/20 h-32 flex items-center justify-center"
-            >
-              <div class="text-white text-xl font-bold">SPORTMAX</div>
-            </div>
-            <div
-              class="bg-gray-900 p-6 rounded-2xl border border-yellow-500/20 h-32 flex items-center justify-center"
-            >
-              <div class="text-white text-xl font-bold">ENERGY+</div>
-            </div>
-            <div
-              class="bg-gray-900 p-6 rounded-2xl border border-yellow-500/20 h-32 flex items-center justify-center"
-            >
-              <div class="text-white text-xl font-bold">FOOTGEAR</div>
-            </div>
-            <div
-              class="bg-gray-900 p-6 rounded-2xl border border-yellow-500/20 h-32 flex items-center justify-center"
-            >
-              <div class="text-white text-xl font-bold">HYDRATE</div>
-            </div>
-          </div> -->
+          <!-- Previous sponsors grid removed for brevity -->
         </div>
 
         <div>
@@ -2088,6 +2019,39 @@
           </div>
         </div>
       </div>
+      <!-- Direct Registration Link Section -->
+      <div class="col-span-1 md:col-span-2 mt-10">
+        <div
+          class="bg-gray-800 p-8 rounded-2xl shadow-xl border border-yellow-500/20 text-center"
+        >
+          <h3
+            class="text-2xl font-bold text-white mb-6 flex items-center justify-center"
+          >
+            <i class="fas fa-link text-yellow-500 mr-3"></i>
+            Direct Registration Link
+          </h3>
+          <p class="text-gray-300 mb-4">
+            Share this direct link with team captains for quick registration:
+          </p>
+          <div class="bg-gray-900 p-4 rounded-lg border border-gray-700 mb-4">
+            <code
+              id="registrationLink"
+              class="text-yellow-400 text-sm md:text-base break-all"
+            >
+              https://skc2025.com/#register
+            </code>
+          </div>
+          <button
+            onclick="copyRegistrationLink()"
+            class="bg-yellow-500 text-gray-900 font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition duration-300 flex items-center justify-center mx-auto"
+          >
+            <i class="fas fa-copy mr-2"></i> Copy Registration Link
+          </button>
+          <p class="text-gray-400 text-sm mt-3">
+            Clicking this link will open the registration form directly
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- =========================
@@ -2154,7 +2118,8 @@
               SKC SOCCER 2025
             </h2>
             <p class="text-gray-400 text-sm mt-2">
-              Season 5 | 20, 21 & 22 December 2025
+              Season 5 | Tournament: 20, 21 & 22 December 2025 | Registration
+              Till: 19 Dec 2025
             </p>
           </div>
 
@@ -2262,78 +2227,12 @@
         return ok;
       }
 
-      // function validateAadhar(input) {
-      //   const ok = /^[0-9]{12}$/.test(input.value);
-      //   input.classList.toggle("input-error", !ok);
-      //   input.nextElementSibling.style.display = ok ? "none" : "block";
-      //   return ok;
-      // }
-
       function validateEmail(input) {
         const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
         input.classList.toggle("input-error", !ok);
         input.nextElementSibling.style.display = ok ? "none" : "block";
         return ok;
       }
-
-      /* ===========================================================================
-   4) PLAYER MANAGEMENT — EXACT 9 REQUIRED
-============================================================================ */
-      //   const playersContainer = document.getElementById("playersContainer");
-      //   const addPlayerBtn = document.getElementById("addPlayer");
-      //   const playerCountLabel = document.getElementById("playerCount");
-
-      //   let playerCount = 0;
-      //   const maxPlayers = 9;
-
-      //   function updatePlayerCount() {
-      //     playerCountLabel.textContent = `Players: ${playerCount}/9`;
-
-      //     if (playerCount >= maxPlayers) {
-      //       addPlayerBtn.disabled = true;
-      //       addPlayerBtn.classList.add("opacity-50", "cursor-not-allowed");
-      //     } else {
-      //       addPlayerBtn.disabled = false;
-      //       addPlayerBtn.classList.remove("opacity-50", "cursor-not-allowed");
-      //     }
-      //   }
-
-      //   function addPlayerField() {
-      //     if (playerCount >= maxPlayers) return;
-
-      //     playerCount++;
-
-      //     const row = document.createElement("div");
-      //     row.className = "grid grid-cols-1 md:grid-cols-2 gap-6 mt-4";
-
-      //     row.innerHTML = `
-      //   <div>
-      //     <input type="text"
-      //       name="player_name_${playerCount}"
-      //       placeholder="Player ${playerCount} Name *"
-      //       required pattern="[A-Za-z\\s]+"
-      //       class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500"
-      //     />
-      //     <div class="error-message">Invalid name</div>
-      //   </div>
-
-      //   <div>
-      //     <input type="text"
-      //       name="player_aadhar_${playerCount}"
-      //       placeholder="Player ${playerCount} Aadhar No *"
-      //       required pattern="[0-9]{12}"
-      //       class="w-full p-4 rounded-lg bg-gray-700 text-white border border-gray-600 focus:border-yellow-500"
-      //     />
-      //     <div class="error-message">Invalid Aadhar (12 digits required)</div>
-      //   </div>
-      // `;
-
-      //     playersContainer.appendChild(row);
-      //     updatePlayerCount();
-      //   }
-
-      //   addPlayerBtn.addEventListener("click", addPlayerField);
-      //   updatePlayerCount();
 
       /* ===========================================================================
    5) TEAM ID GENERATOR
@@ -2364,17 +2263,10 @@
       registrationForm.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        // if (playerCount !== 9) {
-        //   alert("Please add exactly 9 players.");
-        //   return;
-        // }
-
         // Validate all fields
         const fieldsOK =
           validateName(registrationForm.captain) &&
           validateMobile(registrationForm.mobile) &&
-          // validateAadhar(registrationForm.aadhar) &&
-          // validateMobile(registrationForm.alt_contact) &&
           validateEmail(registrationForm.email) &&
           registrationForm.college.value.trim() !== "";
 
@@ -2399,21 +2291,9 @@
           timestamp: new Date().toISOString(),
           college: registrationForm.college.value,
           captainName: registrationForm.captain.value,
-          // aadhar: registrationForm.aadhar.value,
           contact: registrationForm.mobile.value,
-          // alternateContact: registrationForm.alt_contact.value,
           email: registrationForm.email.value,
         };
-
-        // // Add all 9 players data
-        // for (let i = 1; i <= 9; i++) {
-        //   data[`player${i}Name`] = document.querySelector(
-        //     `input[name="player_name_${i}"]`
-        //   ).value;
-        //   data[`player${i}Aadhar`] = document.querySelector(
-        //     `input[name="player_aadhar_${i}"]`
-        //   ).value;
-        // }
 
         // Convert to URL-encoded string
         const urlEncodedData = new URLSearchParams(data).toString();
@@ -2444,25 +2324,17 @@
               // Scroll to the team ID section
               teamIdSuccessSection.scrollIntoView({ behavior: "smooth" });
 
-              // SUCCESS: Reset everything after 5 seconds (changed from 15)
+              // SUCCESS: Reset everything after 5 seconds
               setTimeout(() => {
                 // Reset form and modal
                 registrationForm.reset();
                 successMessage.style.display = "none";
                 registrationModal.classList.remove("open");
 
-                // Reset player fields
-                // playersContainer.innerHTML = "";
-                // playerCount = 0;
-                // updatePlayerCount();
-
-                // Re-add initial player field
-                // addPlayerField();
-
                 // CRITICAL FIX: Reset button to original state
                 submitBtn.textContent = "Register Team";
                 submitBtn.disabled = false;
-              }, 5000); // Changed from 15000 to 5000 (5 seconds)
+              }, 5000);
             } else {
               // ERROR: Immediately reset button on error
               alert("Error: " + response.message);
@@ -2482,13 +2354,9 @@
               registrationForm.reset();
               successMessage.style.display = "none";
               registrationModal.classList.remove("open");
-              // playersContainer.innerHTML = "";
-              // playerCount = 0;
-              // updatePlayerCount();
-              // addPlayerField();
               submitBtn.textContent = "Register Team";
               submitBtn.disabled = false;
-            }, 5000); // Changed from 15000 to 5000 (5 seconds)
+            }, 5000);
           }
         };
         xhr.onerror = function () {
@@ -2518,8 +2386,9 @@
       // COUNTDOWN TIMER
       // =======================
       function updateCountdown() {
+        // EXTENDED REGISTRATION DEADLINE: December 19, 2025
         const registrationDeadline = new Date(
-          "December 15, 2025 23:59:59"
+          "December 19, 2025 23:59:59"
         ).getTime();
         const now = new Date().getTime();
         const timeLeft = registrationDeadline - now;
